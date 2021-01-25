@@ -24,14 +24,14 @@ export class Header extends Component {
                                     <a className="nav-link" href="#">Compra Ya !</a>
                                 </li>
                                 <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a className="nav-link" href="#">Contactanos</a>
+                                </li>
+                                <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Iniciar Sesion</a>
                                     <div className="dropdown-menu">
                                         <a className="dropdown-item" href="#">Ingresar</a>
                                         <a className="dropdown-item" href="#">Registrarse</a>
                                     </div>
-                                </li>
-                                <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a className="nav-link" href="#">Contactanos</a>
                                 </li>
                             </ul>
                         </div> 
