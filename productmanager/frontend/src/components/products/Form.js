@@ -23,7 +23,12 @@ export class Form extends Component {
         const {name, description, price, image} = this.state;
         const product = {name, description, price, image};
         this.props.addProduct(product)
-        console.log("submit");
+        this.setState({
+          name: '',
+          description: '',
+          price: 0,
+          image: ''
+        })
       };
 
     render() {
