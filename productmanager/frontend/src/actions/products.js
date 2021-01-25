@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { createMessage } from './messages';
+import { createMessage, returnErrors } from './messages';
 
-import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT,GET_ERRORS} from './types';
+import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT} from './types';
 
 // GET PRODUCTS
 export const getProducts = () => dispatch => {
@@ -11,7 +11,7 @@ export const getProducts = () => dispatch => {
                 type: GET_PRODUCTS,
                 payload: res.data
             });
-        }).catch(err => console.log(err));
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
 // DELETE PRODUCTS
@@ -37,14 +37,5 @@ export const addProduct = product => dispatch => {
                 type: ADD_PRODUCT,
                 payload: res.data
             });
-        }).catch(err => {
-            const errors = {
-                msg: err.response.data,
-                status: err.response.status
-            };
-            dispatch({
-                type: GET_ERRORS,
-                payload: errors
-            });
-        });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
