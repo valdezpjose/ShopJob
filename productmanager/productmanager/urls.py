@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('frontend.url')),
     path('', include('products.url')),
-    path('', include('accounts.url'))
+    path('', include('accounts.url')),
+    path('', include('invoice.url'))
 ]
 
 if settings.DEBUG:

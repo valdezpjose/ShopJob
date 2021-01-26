@@ -68,7 +68,7 @@ export class Form extends Component {
           </div>
           <div className="form-group">
             <label>Precio</label>
-            <textarea
+            <input
               className="form-control"
               type="number"
               name="price"

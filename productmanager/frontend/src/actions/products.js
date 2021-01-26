@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
-import { tokenConfig, tokenConfig2, tokenConfig3 } from './auth';
+import { tokenConfig, tokenConfig2, tokenConfig3 } from './auth'; // 1 Auth-token 2 Media 3 AllAllow Post
 
-import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT, GET_ALL_PRODUCTS} from './types';
+import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT, GET_ALL_PRODUCTS, GET_PRODUCT} from './types';
 
 // GET PRODUCTS
 export const getProducts = () => (dispatch, getState) => {
@@ -39,7 +39,6 @@ export const addProduct = product =>  (dispatch, getState) => {
                 payload: res.data
             });
         }).catch(err => {
-            console.log(err);
             dispatch(returnErrors(err.response.data, err.response.status));} );
 };
 
@@ -50,6 +49,18 @@ export const getAllProducts = () => (dispatch, getState) => {
         .then(res => {
             dispatch({
                 type: GET_ALL_PRODUCTS,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+// GET PRODUCT
+
+export const getProduct = (id) => (dispatch, getState) => {
+    axios.get(`/all/products/${id}/`,tokenConfig3(getState))
+        .then(res => {
+            dispatch({
+                type: GET_PRODUCT,
                 payload: res.data
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));

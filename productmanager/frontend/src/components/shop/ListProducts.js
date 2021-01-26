@@ -1,20 +1,27 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAllProducts} from '../../actions/products';
+import { addToCart} from '../../actions/cart';
+
+
+
 import './list.css';
 
 export class ListProducts extends Component {
     static propTypes = {
         products: PropTypes.array.isRequired,
-        getAllProducts: PropTypes.func.isRequired,
-        auth: PropTypes.object.isRequired
+		getAllProducts: PropTypes.func.isRequired,
+		addToCart: PropTypes.func.isRequired,
+		auth: PropTypes.object.isRequired,
+		cart: PropTypes.object.isRequired
     }
     componentDidMount(){
         this.props.getAllProducts();
     }
     render() {
-        const { isAuthenticated, user } = this.props.auth;
+
+		const { isAuthenticated, user } = this.props.auth;
         return (
             <div className="wrapper">
 	<div className="desc">
@@ -29,7 +36,8 @@ export class ListProducts extends Component {
             { this.props.products.map(product =>{
                 if(isAuthenticated){
                     if(user.id !== product.owner){
-                    return (<div className="product-grid__product-wrapper">
+                    return (
+				<div className="product-grid__product-wrapper" key={product.id}>
 					<div className="product-grid__product">
 						<div className="product-grid__img-wrapper">			
 							<img src={product.image} alt="Img" className="product-grid__img" />
@@ -39,15 +47,25 @@ export class ListProducts extends Component {
 						<div className="product-grid__extend-wrapper">
 							<div className="product-grid__extend">
 								<p className="product-grid__description">{product.description}</p>
-								<span className="product-grid__btn product-grid__add-to-cart"><i className="fa fa-cart-arrow-down"></i> Agregar al Carrito</span>				
-								<span className="product-grid__btn product-grid__view"><i className="fa fa-eye"></i> Ver mas</span>
-							</div>
+								<button
+                                    onClick={(e) => {			
+										if(!this.props.cart.items){
+											this.props.addToCart(this.props.cart, product);
+										}else{
+											this.props.addToCart(this.props.cart.items, product);	
+										}
+										}}
+                                    className="btn btn-danger btn-sm">
+                                 {" "}
+                                 Agregar al Carrito
+                                 </button></div>
 						</div>
 					</div>
 				</div>)
                     }
                 }else{
-                    return (<div className="product-grid__product-wrapper">
+                    return (<div className="product-grid__product-wrapper" key={product.id}>
+					
 					<div className="product-grid__product">
 						<div className="product-grid__img-wrapper">			
 							<img src={product.image} alt="Img" className="product-grid__img" />
@@ -57,9 +75,19 @@ export class ListProducts extends Component {
 						<div className="product-grid__extend-wrapper">
 							<div className="product-grid__extend">
 								<p className="product-grid__description">{product.description}</p>
-								<span className="product-grid__btn product-grid__add-to-cart"><i className="fa fa-cart-arrow-down"></i> Agregar al Carrito</span>				
-								<span className="product-grid__btn product-grid__view"><i className="fa fa-eye"></i> Ver mas</span>
-							</div>
+								<button
+                                    onClick={(e) => {			
+										if(!this.props.cart.items){
+											this.props.addToCart(this.props.cart, product);
+										}else{
+											this.props.addToCart(this.props.cart.items, product);	
+										}
+										}}
+                                    className="btn btn-danger btn-sm">
+                                 {" "}
+                                 Agregar al Carrito
+                                 </button>
+						    </div>
 						</div>
 					</div>
 				</div>)
@@ -75,7 +103,8 @@ export class ListProducts extends Component {
 
 const mapStateToProps = state => ({
     products: state.products.products,
-    auth: state.auth
+	auth: state.auth,
+	cart: state.cart
 });
 
-export default connect(mapStateToProps, {getAllProducts})(ListProducts);
+export default connect(mapStateToProps, {getAllProducts, addToCart})(ListProducts);

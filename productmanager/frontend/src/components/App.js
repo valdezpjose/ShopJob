@@ -13,6 +13,8 @@ import Register from './accounts/Register';
 import PrivateRoute from './common/PrivateRoute';
 import HomePage from './home/HomePage';
 import ListProducts from './shop/ListProducts';
+import Checkout from './shop/Checkout';
+import Invoice from './shop/Invoice';
 
 
 import {Provider} from 'react-redux';
@@ -50,6 +52,8 @@ class App extends Component {
                      <Route exact path="/login" component = {Login} />
                      <Route exact path="/home" component = {HomePage} />
                      <Route exact path="/list" component = {ListProducts} />
+                     <Route exact path="/checkout" component = {Checkout} />
+                     <Route exact path="/invoice" component = {Invoice} />
                    </Switch>
                    </div>  
               </Fragment>

@@ -14,6 +14,8 @@ export class Alerts extends Component {
         const { error, alert, message } = this.props;
         if(error !== prevProps.error){
             if (error.msg.name) alert.error("Nombre Incorrecto");
+            if (error.msg.nit) alert.error("Nit Incorrecto");
+            if (error.msg.direction) alert.error("Direccion Incorrecta");
             if (error.msg.price) alert.error("Precio Invalido");
             if (error.msg.image) alert.error("Imagen Invalida");
             if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
@@ -24,6 +26,7 @@ export class Alerts extends Component {
             if (message.deleteProduct) alert.success(message.deleteProduct);
             if (message.addProduct) alert.success(message.addProduct);
             if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
+            message.addProduct = null
         }
     }
 
