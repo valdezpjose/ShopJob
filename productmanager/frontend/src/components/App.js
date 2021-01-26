@@ -11,6 +11,8 @@ import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
 import PrivateRoute from './common/PrivateRoute';
+import HomePage from './home/HomePage';
+import ListProducts from './shop/ListProducts';
 
 
 import {Provider} from 'react-redux';
@@ -46,6 +48,8 @@ class App extends Component {
                      <PrivateRoute exact path="/" component = {Dashboard} />
                      <Route exact path="/register" component = {Register} />
                      <Route exact path="/login" component = {Login} />
+                     <Route exact path="/home" component = {HomePage} />
+                     <Route exact path="/list" component = {ListProducts} />
                    </Switch>
                    </div>  
               </Fragment>

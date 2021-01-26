@@ -22,13 +22,14 @@ export class Header extends Component {
           <strong>{user ? `Bienvenido ${user.username}` : ''}</strong>
         </span>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-           <a className="nav-link" href="#">Compra Ya !</a>
+           <a className="nav-link" href="#">Empieza a Comprar</a>
         </li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-           <a className="nav-link" href="#">Contactanos</a>
+           <a className="nav-link" href="#">Reportes</a>
         </li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-           <a className="nav-link" href="#">Mis Productos</a>
+        <Link to="/" className="nav-link">
+        Mis Productos</Link>
         </li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
            <button onClick={this.props.logout} className="btn btn-danger">
@@ -40,12 +41,6 @@ export class Header extends Component {
 
     const guestLinks = (
         <ul className="navbar-nav ml-auto py-4 py-md-0">
-        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-           <a className="nav-link" href="#">Compra Ya !</a>
-        </li>
-        <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-           <a className="nav-link" href="#">Contactanos</a>
-        </li>
         <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Iniciar Sesion</a>
            <div className="dropdown-menu">
