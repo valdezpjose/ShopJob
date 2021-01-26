@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
-import { tokenConfig, tokenConfig2 } from './auth';
+import { tokenConfig, tokenConfig2, tokenConfig3 } from './auth';
 
-import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT} from './types';
+import {GET_PRODUCTS,DELETE_PRODUCT, ADD_PRODUCT, GET_ALL_PRODUCTS} from './types';
 
 // GET PRODUCTS
 export const getProducts = () => (dispatch, getState) => {
@@ -41,4 +41,16 @@ export const addProduct = product =>  (dispatch, getState) => {
         }).catch(err => {
             console.log(err);
             dispatch(returnErrors(err.response.data, err.response.status));} );
+};
+
+// GET ALL PRODUCTS
+
+export const getAllProducts = () => (dispatch, getState) => {
+    axios.get('/all/products/',tokenConfig3(getState))
+        .then(res => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };

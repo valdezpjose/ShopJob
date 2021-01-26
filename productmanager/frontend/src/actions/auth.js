@@ -141,3 +141,17 @@ export const tokenConfig = (getState) => {
   
     return config;
   };
+
+  export const tokenConfig3 = (getState) => {
+    // Get token from state
+    const token = getState().auth.token;
+  
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    return config;
+  };

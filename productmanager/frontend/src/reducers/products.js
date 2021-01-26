@@ -1,4 +1,4 @@
-import {GET_PRODUCTS, DELETE_PRODUCT, ADD_PRODUCT} from '../actions/types.js';
+import {GET_PRODUCTS, DELETE_PRODUCT, ADD_PRODUCT, GET_ALL_PRODUCTS} from '../actions/types.js';
 
 const initialState = {
     products: []
@@ -7,6 +7,7 @@ const initialState = {
 export default function(state= initialState, action){
     switch(action.type){
         case GET_PRODUCTS:
+        case GET_ALL_PRODUCTS:
             return{
                 ...state, 
                 products: action.payload

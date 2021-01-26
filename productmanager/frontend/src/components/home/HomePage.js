@@ -29,9 +29,9 @@ export class HomePage extends Component {
 				<br />
 				O si lo tuyo es vender <Link to="/register">registrate</Link> ahora y forma parte de nuestra familia.</p>
                 <br />
-                <button onClick={this.props.logout} className="btn btn-danger">
-                  Empieza a Comprar
-              </button>
+                <Link to="/list" className="btn btn-danger">
+                    Empieza a Comprar
+                </Link>
             </div>
         )
     }
