@@ -12,7 +12,8 @@ body{
 	background-size: 7%;
 	background-color: #fff;
 	overflow-x: hidden;
-    transition: all 200ms linear;
+	transition: all 200ms linear;
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
 }
 ::selection {
 	color: #fff;

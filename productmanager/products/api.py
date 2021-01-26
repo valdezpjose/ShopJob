@@ -16,3 +16,9 @@ class ProductViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+class ProductViewAll(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ProductSerializer

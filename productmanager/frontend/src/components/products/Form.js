@@ -9,7 +9,7 @@ export class Form extends Component {
         name: '',
         description: '',
         price: 0,
-        image: ''
+        image: null
     }
 
     static propTypes = {
@@ -18,16 +18,25 @@ export class Form extends Component {
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     
+    handleInputChange = (e) => {
+      this.setState({
+        image: e.target.files[0]
+      })
+    };
+
     onSubmit = (e) => {
         e.preventDefault();
-        const {name, description, price, image} = this.state;
-        const product = {name, description, price, image};
-        this.props.addProduct(product)
+        let form_data = new FormData();
+        form_data.append('image', this.state.image, this.state.image.name);
+        form_data.append('name', this.state.name);
+        form_data.append('description', this.state.description);
+        form_data.append('price', this.state.price);
+        this.props.addProduct(form_data)
         this.setState({
           name: '',
           description: '',
           price: 0,
-          image: ''
+          image: null
         })
       };
 
@@ -69,12 +78,10 @@ export class Form extends Component {
           </div>
           <div className="form-group">
             <label>Imagen</label>
-            <textarea
-              className="form-control"
-              type="text"
+            <input
+              type="file"
               name="image"
-              onChange={this.onChange}
-              value={image}
+              onChange={this.handleInputChange}
             />
           </div>
           <div className="form-group">

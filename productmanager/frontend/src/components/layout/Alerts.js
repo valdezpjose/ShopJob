@@ -16,11 +16,14 @@ export class Alerts extends Component {
             if (error.msg.name) alert.error("Nombre Incorrecto");
             if (error.msg.price) alert.error("Precio Invalido");
             if (error.msg.image) alert.error("Imagen Invalida");
+            if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
+            if (error.msg.username) alert.error("Nombre de usuario ya existente");
         }
 
         if(message !== prevProps.error){
             if (message.deleteProduct) alert.success(message.deleteProduct);
             if (message.addProduct) alert.success(message.addProduct);
+            if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
         }
     }
 

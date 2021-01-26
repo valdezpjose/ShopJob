@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProducts, deleteProduct} from '../../actions/products';
 
+
 export class Products extends Component {
     static propTypes = {
         products: PropTypes.array.isRequired,
@@ -34,7 +35,7 @@ export class Products extends Component {
                                 <td>{product.name}</td>
                                 <td>{product.description}</td>
                                 <td>{product.price}</td>
-                                <td>{product.image}</td>
+                                <td><img src={product.image}  width="50" height="50 "/></td>
                                 <td>
                                 <button
                                     onClick={this.props.deleteProduct.bind(this, product.id)}
