@@ -12,7 +12,6 @@ Este está destinado a ser un proyecto simple que usa Django como backend para l
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
 * [Django](https://www.djangoproject.com/)
 * [django-rest-framework](http://www.django-rest-framework.org/)
-* [django-rest-framework-jwt](https://github.com/GetBlimp/django-rest-framework-jwt)
 
 ## Como empezar a utilizarlo
 
