@@ -13,6 +13,7 @@ export class Products extends Component {
     }
     componentDidMount(){
         this.props.getProducts();
+        
     }
     render() {
         return (
@@ -35,7 +36,7 @@ export class Products extends Component {
                                 <td>{product.id}</td>
                                 <td>{product.name}</td>
                                 <td>{product.description}</td>
-                                <td>{product.price}</td>
+                                <td>Q{product.price}</td>
                                 <td><img src={product.image}  width="50" height="50 "/></td>
                                 <td>
                                 <button

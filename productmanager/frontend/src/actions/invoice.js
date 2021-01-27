@@ -18,3 +18,14 @@ export const addInvoice = invoice =>  (dispatch, getState) => {
             dispatch(returnErrors(err.response.data, err.response.status));} );
 };
 
+// GET INVOICE
+
+export const getInvoice = () => (dispatch, getState) => {
+    axios.get('/only/invoice/',tokenConfig(getState))
+        .then(res => {
+            dispatch({
+                type: GET_INVOICE,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};

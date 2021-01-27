@@ -15,6 +15,7 @@ import HomePage from './home/HomePage';
 import ListProducts from './shop/ListProducts';
 import Checkout from './shop/Checkout';
 import Invoice from './shop/Invoice';
+import Report from './reports/report';
 
 
 import {Provider} from 'react-redux';
@@ -48,6 +49,7 @@ class App extends Component {
                    <div className ="container inside">
                    <Switch>
                      <PrivateRoute exact path="/" component = {Dashboard} />
+                     <PrivateRoute exact path="/report" component = {Report} />
                      <Route exact path="/register" component = {Register} />
                      <Route exact path="/login" component = {Login} />
                      <Route exact path="/home" component = {HomePage} />
